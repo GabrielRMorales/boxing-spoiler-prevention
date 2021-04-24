@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+  
+    "name": "Boxing Spoiler Blocker Plugin",
+    "description": "This extension will hide the outcome of boxing fights on Boxrec",
+    "version": "1.0",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+      },
+     
+      "page_action": {},
+      "permissions" : [
+        "declarativeContent",
+        "activeTab",
+        "storage"
+      ],
+      "content_scripts":
+      [
+          {
+              "matches": ["http://*/*", "https://*/*","*://*.boxrec.com/*"],
+              "js": ["content.js"],
+              "run_at": "document_end"
+          }
+      ],
+      "icons" : {
+     
+      }
+    }
