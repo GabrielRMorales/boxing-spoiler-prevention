@@ -1,14 +1,56 @@
-let boutResult = document.querySelectorAll(".boutResult");
-boutResult.forEach(result=>{result.style.display="none"});
-/*
-let dataTable = document.querySelector("dataTable");
-let dataTableResults = dataTable.querySelectorAll("tbody");
-alert(dataTableResults.length);*/
-//select all td with result (10), decision 11 , and rounds 12
+"use strict";
+// let boutResult = document.querySelectorAll(".boutResult");
+// boutResult.forEach(result=>{result.style.display="none"});
+//consider adding the domcontentload event listener
+  let dataTableResults = document.querySelectorAll("tbody");
+  /*
+  let fights = [...dataTableResults].filter(el=>{
+    return el.id;
+  });
+  
+  fights.forEach(tbody=>{
+    let dataToHide = tbody.children[0].children;
+    [...dataToHide].forEach((td, index)=>{
+     
+     if (index>9 && index<12){
+      // console.log(td);
+      let data = td;
+      data.innerText = " ";
+      }
+    });
+  });
+*/
 
-//select all match results
-//replace each with a spoiler image (different sized)
-//set event listener so that every click will reveal the result
+for (let j=0;j<dataTableResults.length;j++){    
+    if (dataTableResults[j].id){
+        //go to row1 of each
+      let dataToHide = dataTableResults[j].childNodes[0].childNodes;
+            for (let i=0;i<dataToHide.length;i++){
+            
+    //select all td with result (10), decision 11 , and rounds 12
+              if (i>8 && i<12){
+                dataTableResults[j].childNodes[0].childNodes[i].innerText= "BLOCKED";
+              }        
+            }
+      dataTableResults[j].childNodes[1].innerText = "RESULTS HIDDEN";
+      dataTableResults[j].childNodes[1].style.textAlign = "center";
+     
+
+    }
+    
+    //select all match results (row2)
+    //replace each with a spoiler image (different sized)
+    //set event listener so that every click will reveal the result
+
+}
+  
+
+  
+
+
+
+
+
 
 //add button to reapply all spoiler blockers on the page 
 
