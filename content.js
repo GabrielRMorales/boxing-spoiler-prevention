@@ -1,7 +1,7 @@
 "use strict";
 // let boutResult = document.querySelectorAll(".boutResult");
 // boutResult.forEach(result=>{result.style.display="none"});
-//consider adding the domcontentload event listener
+//document.addEventListener("DOMContentLoaded", ()=>{
   let dataTableResults = document.querySelectorAll("tbody");
   /*
   let fights = [...dataTableResults].filter(el=>{
@@ -30,10 +30,17 @@ for (let j=0;j<dataTableResults.length;j++){
     //select all td with result (10), decision 11 , and rounds 12
               if (i>8 && i<12){
                 dataTableResults[j].childNodes[0].childNodes[i].innerText= "BLOCKED";
+                //eventlistener here
+                
               }        
             }
-      dataTableResults[j].childNodes[1].innerText = "RESULTS HIDDEN";
-      dataTableResults[j].childNodes[1].style.textAlign = "center";
+      let prevFightData = dataTableResults[j].childNodes[1].innerHTML;
+      dataTableResults[j].childNodes[1].innerHTML = `<button id='show-overview-results-${j}'>SHOW RESULTS</button>`;
+      let showResultsBtn = document.getElementById(`show-overview-results-${j}`);
+      showResultsBtn.addEventListener("click", function(){   
+        dataTableResults[j].childNodes[1].innerHTML = prevFightData;
+      })
+      //dataTableResults[j].childNodes[1].style.visibility = "center";
      
 
     }
@@ -43,7 +50,8 @@ for (let j=0;j<dataTableResults.length;j++){
     //set event listener so that every click will reveal the result
 
 }
-  
+
+//closing})
 
   
 
