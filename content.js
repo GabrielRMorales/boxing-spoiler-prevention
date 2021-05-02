@@ -29,9 +29,13 @@ for (let j=0;j<dataTableResults.length;j++){
             
     //select all td with result (10), decision 11 , and rounds 12
               if (i>8 && i<12){
-                dataTableResults[j].childNodes[0].childNodes[i].innerText= "BLOCKED";
+                let prevResult = dataTableResults[j].childNodes[0].childNodes[i].innerHTML;
+                dataTableResults[j].childNodes[0].childNodes[i].innerHTML= `<button class='hide-button' id='show-results-${j}-${i}'>BLOCKED</button>`;
+                let showResultBtn = document.getElementById(`show-results-${j}-${i}`);
                 //eventlistener here
-                
+                showResultBtn.addEventListener("click", function(){
+                  dataTableResults[j].childNodes[0].childNodes[i].innerHTML = prevResult;
+                });
               }        
             }
       let prevFightData = dataTableResults[j].childNodes[1].innerHTML;
@@ -40,9 +44,7 @@ for (let j=0;j<dataTableResults.length;j++){
       showResultsBtn.addEventListener("click", function(){   
         dataTableResults[j].childNodes[1].innerHTML = prevFightData;
       })
-      //dataTableResults[j].childNodes[1].style.visibility = "center";
-     
-
+      
     }
     
     //select all match results (row2)
